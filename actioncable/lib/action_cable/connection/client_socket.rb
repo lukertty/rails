@@ -68,6 +68,7 @@ module ActionCable
       end
 
       def ping
+        logger.debug "[ping] #{@ready_state} #{@ping_times}"
         return false if @ready_state > OPEN
         @ping_times += 1
         result = @driver.ping("pong") do
